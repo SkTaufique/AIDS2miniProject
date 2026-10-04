@@ -1,0 +1,82 @@
+[
+  {
+    "id": "sample_001",
+    "headline": "Massive earthquake strikes offshore Tokyo, triggering tsunami warnings across Japan coast.",
+    "caption": "Flooded coastal residential area with partially submerged cars and houses under stormy skies.",
+    "category": "out_of_context",
+    "label": 1,
+    "label_text": "Fake / Out-of-Context",
+    "image_source": "historical_archive_2011_fukushima.jpg",
+    "explanation": "Image depicts 2011 Great East Japan earthquake tsunami, recycled falsely for a recent fabricated event."
+  },
+  {
+    "id": "sample_002",
+    "headline": "NASA James Webb Space Telescope reveals detailed rings and auroras of Uranus in high-contrast infrared.",
+    "caption": "Infrared astronomical capture of Uranus glowing cyan with faint concentric rings and polar cap brightening.",
+    "category": "authentic",
+    "label": 0,
+    "label_text": "Authentic / Real",
+    "image_source": "nasa_jwst_uranus_2023.jpg",
+    "explanation": "Image and headline align perfectly with verified NASA/ESA astronomical releases."
+  },
+  {
+    "id": "sample_003",
+    "headline": "SHOCKING: Extraterrestrial spacecraft found frozen under Antarctic ice sheet by military expedition!",
+    "caption": "Metallic saucer embedded in blue glacier ice surrounded by researchers in yellow thermal suits.",
+    "category": "synthetic_ai",
+    "label": 1,
+    "label_text": "Fake / AI-Generated",
+    "image_source": "midjourney_saucer_antarctica.jpg",
+    "explanation": "Synthetic visual rendering with AI generation artifacts; sensationalist clickbait phrasing."
+  },
+  {
+    "id": "sample_004",
+    "headline": "Severe flash flooding submerges subway tracks and downtown roads in Mumbai following intense monsoon downpour.",
+    "caption": "Commuters wading through knee-deep brown water near a subway station with flooded tracks and stopped train.",
+    "category": "authentic",
+    "label": 0,
+    "label_text": "Authentic / Real",
+    "image_source": "mumbai_monsoon_subway_2024.jpg",
+    "explanation": "Textual context and visual environment correspond to documented urban monsoon flooding."
+  },
+  {
+    "id": "sample_005",
+    "headline": "Archaeologists in Egypt uncover intact gold-plated chariot belonging to King Tutankhamun's bodyguard.",
+    "caption": "Modern 3D rendered cinematic model of an ancient Egyptian golden battle chariot in museum lighting.",
+    "category": "out_of_context",
+    "label": 1,
+    "label_text": "Fake / Out-of-Context",
+    "image_source": "cg_artist_render_egypt.jpg",
+    "explanation": "CGI concept art from a digital artist portfolio presented falsely as a genuine archaeological discovery."
+  },
+  {
+    "id": "sample_006",
+    "headline": "Prime Minister addresses the World Economic Forum summit in Davos on digital public infrastructure.",
+    "caption": "World leader delivering speech from official podium featuring WEF Davos conference backdrop banner.",
+    "category": "authentic",
+    "label": 0,
+    "label_text": "Authentic / Real",
+    "image_source": "davos_keynote_speech.jpg",
+    "explanation": "Verified institutional context; speech setting and attendee podium match press dispatch."
+  },
+  {
+    "id": "sample_007",
+    "headline": "Secret volcanic eruption erupts in Central Park New York, spewing lava onto Manhattan streets!",
+    "caption": "Central Park trees ablaze with glowing orange lava river cutting across street towards skyscrapers.",
+    "category": "synthetic_ai",
+    "label": 1,
+    "label_text": "Fake / AI-Generated",
+    "image_source": "dalle_volcano_manhattan.jpg",
+    "explanation": "Physically impossible event; visual diffusion artifacts and saturated unnatural color gradients."
+  },
+  {
+    "id": "sample_008",
+    "headline": "Indian Space Research Organisation successfully launches meteorological satellite aboard GSLV rocket.",
+    "caption": "GSLV rocket lifting off from launch pad with prominent orange exhaust plume into clear blue sky.",
+    "category": "authentic",
+    "label": 0,
+    "label_text": "Authentic / Real",
+    "image_source": "isro_gslv_liftoff.jpg",
+    "explanation": "Verified official launch footage aligned with mission press release."
+  }
+]

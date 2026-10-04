@@ -1,0 +1,35 @@
+# Core Deep Learning & PyTorch (For CUDA 12 support, install via PyTorch wheel index or pip)
+torch
+torchvision
+torchaudio
+
+# Transformers & Cross-Modal Pre-training
+transformers
+open_clip_torch
+sentencepiece
+accelerate
+
+# Scientific Computing & Data Processing
+numpy
+pandas
+scikit-learn
+scipy
+
+# Computer Vision & Image Processing
+Pillow
+opencv-python
+matplotlib
+seaborn
+
+# Explainable AI (XAI)
+grad-cam
+
+# Web API & UI Dashboard
+fastapi
+uvicorn[standard]
+python-multipart
+jinja2
+pydantic
+requests
+tqdm
+python-docx
