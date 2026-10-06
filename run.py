@@ -29,10 +29,10 @@ def main():
     # Launch browser thread
     threading.Thread(target=launch_browser, daemon=True).start()
 
-    # Start FastAPI / Uvicorn Server
+    # Start FastAPI / Uvicorn Server with hot-reload enabled
     import uvicorn
     print("\n[SERVER] Starting API server on http://127.0.0.1:8000 ...")
-    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=False)
+    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True, reload_dirs=["app", "models"])
 
 if __name__ == "__main__":
     main()

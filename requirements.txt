@@ -24,6 +24,14 @@ seaborn
 # Explainable AI (XAI)
 grad-cam
 
+# Audio & Speech Processing
+openai-whisper
+librosa
+soundfile
+
+# Video Processing
+moviepy
+
 # Web API & UI Dashboard
 fastapi
 uvicorn[standard]

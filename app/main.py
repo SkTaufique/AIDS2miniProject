@@ -15,11 +15,13 @@ from models.image_forensics import ImageForensicAnalyzer
 from models.multimodal_classifier import FusionDecisionEngine
 from models.explainability import ExplainableAIInspector
 from models.fact_checker import LiveFactCheckEngine
+from models.audio_analyzer import AudioFeatureExtractor
+from models.video_analyzer import VideoFeatureExtractor
 
 app = FastAPI(
     title="Multimodal Fake Content Detection API",
-    description="Cross-modal verification of news claims and visual imagery using CLIP and Deep Fusion.",
-    version="1.0.0"
+    description="Cross-modal verification of news claims, images, video footage, and audio voice clones.",
+    version="2.0.0"
 )
 
 # Enable CORS for local development
@@ -38,6 +40,8 @@ print(f"[SYSTEM] Initializing detection pipeline on device: {device.upper()}")
 feature_extractor = MultimodalFeatureExtractor(device=device)
 text_analyzer = TextCredibilityAnalyzer()
 forensic_analyzer = ImageForensicAnalyzer()
+audio_extractor = AudioFeatureExtractor(device=device)
+video_extractor = VideoFeatureExtractor(clip_extractor=feature_extractor, audio_extractor=audio_extractor, device=device)
 fact_checker = LiveFactCheckEngine(feature_extractor=feature_extractor, sim_threshold=0.72)
 
 checkpoint_path = os.path.join("models", "checkpoints", "multimodal_best.pt")
@@ -71,7 +75,8 @@ async def get_system_status():
         "cuda_available": has_cuda,
         "gpu_name": gpu_name,
         "vram_mb": vram_mb,
-        "model_architecture": "OpenCLIP ViT-B/32 + Custom Fusion Classifier"
+        "model_architecture": "OpenCLIP ViT-B/32 + Whisper ASR + Librosa Forensics + Deep Fusion Classifier",
+        "modalities_supported": ["Text", "Image", "Video", "Audio"]
     }
 
 @app.get("/api/samples")
@@ -194,6 +199,140 @@ async def detect_fake_content(
         import traceback
         traceback.print_exc()
         return JSONResponse(status_code=500, content={"success": False, "error": str(e)})
+
+@app.post("/api/detect-video")
+async def detect_video_content(
+    video: UploadFile = File(...),
+    text: Optional[str] = Form(None)
+):
+    """
+    Multimodal Video verification endpoint:
+    Processes keyframes, extracts audio, transcribes speech, evaluates facial tampering.
+    """
+    import tempfile
+    suffix = os.path.splitext(video.filename)[-1] or ".mp4"
+    with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp_video:
+        tmp_video.write(await video.read())
+        tmp_video_path = tmp_video.name
+
+    try:
+        # Run video analysis
+        video_data = video_extractor.analyze_video(tmp_video_path, claim_text=text)
+        if video_data.get("status") == "error":
+            return JSONResponse(status_code=400, content={"success": False, "error": video_data.get("error")})
+
+        # Text analysis if text provided
+        text_data = text_analyzer.analyze(text) if text and text.strip() else None
+
+        # Fact check if claim or transcript available
+        fact_check = None
+        eval_claim = text if text and text.strip() else video_data.get("audio_data", {}).get("transcript")
+        if eval_claim:
+            fact_check = fact_checker.verify_claim(eval_claim)
+
+        # Run Multimodal Decision Engine
+        prediction = decision_engine.predict_video(
+            video_data=video_data,
+            text_data=text_data,
+            fact_check_data=fact_check
+        )
+
+        return {
+            "success": True,
+            "modality": "video",
+            "verdict": prediction["verdict"],
+            "is_fake": prediction["is_fake"],
+            "confidence": prediction["confidence"],
+            "fake_probability": prediction["fake_probability"],
+            "authentic_probability": prediction["authentic_probability"],
+            "risk_factors": prediction["risk_factors"],
+            "fact_check": fact_check,
+            "metadata": video_data["metadata"],
+            "thumbnails": video_data["thumbnails"],
+            "audio_data": video_data["audio_data"],
+            "diagnostics": prediction["diagnostics"]
+        }
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return JSONResponse(status_code=500, content={"success": False, "error": str(e)})
+    finally:
+        try:
+            if os.path.exists(tmp_video_path):
+                os.remove(tmp_video_path)
+        except Exception:
+            pass
+
+@app.post("/api/detect-audio")
+async def detect_audio_content(
+    audio: UploadFile = File(...),
+    text: Optional[str] = Form(None)
+):
+    """
+    Multimodal Audio & Speech verification endpoint:
+    Transcribes audio via Whisper ASR, extracts acoustic vocoder forensics (AI voice clone).
+    """
+    import tempfile
+    suffix = os.path.splitext(audio.filename)[-1] or ".wav"
+    with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp_audio:
+        tmp_audio.write(await audio.read())
+        tmp_audio_path = tmp_audio.name
+
+    try:
+        # Transcribe audio & perform acoustic forensics
+        trans_data = audio_extractor.transcribe(tmp_audio_path)
+        forensics_data = audio_extractor.analyze_voice_forensics(tmp_audio_path)
+
+        # Check credibility of spoken text
+        spoken_text = trans_data.get("transcript", "")
+        text_data = text_analyzer.analyze(text or spoken_text)
+
+        # Fact check spoken claim
+        fact_check = None
+        eval_text = text if text and text.strip() else spoken_text
+        if eval_text:
+            fact_check = fact_checker.verify_claim(eval_text)
+
+        # Run Decision Engine
+        prediction = decision_engine.predict_audio(
+            audio_forensics=forensics_data,
+            transcription_data=trans_data,
+            text_data=text_data,
+            fact_check_data=fact_check
+        )
+
+        return {
+            "success": True,
+            "modality": "audio",
+            "verdict": prediction["verdict"],
+            "is_fake": prediction["is_fake"],
+            "confidence": prediction["confidence"],
+            "fake_probability": prediction["fake_probability"],
+            "authentic_probability": prediction["authentic_probability"],
+            "risk_factors": prediction["risk_factors"],
+            "fact_check": fact_check,
+            "transcription": trans_data,
+            "audio_forensics": {
+                "synthetic_voice_score": forensics_data.get("synthetic_voice_score"),
+                "risk_level": forensics_data.get("risk_level"),
+                "pitch_mean_hz": forensics_data.get("pitch_mean_hz"),
+                "pitch_jitter_hz": forensics_data.get("pitch_jitter_hz"),
+                "spectral_rolloff_hz": forensics_data.get("spectral_rolloff_hz")
+            },
+            "diagnostics": prediction["diagnostics"]
+        }
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return JSONResponse(status_code=500, content={"success": False, "error": str(e)})
+    finally:
+        try:
+            if os.path.exists(tmp_audio_path):
+                os.remove(tmp_audio_path)
+        except Exception:
+            pass
 
 if __name__ == "__main__":
     import uvicorn

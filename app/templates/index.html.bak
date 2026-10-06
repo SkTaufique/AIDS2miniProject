@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Veritas AI — Multimodal Fake Content Detection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -57,7 +54,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
     .glow-circle-2 {
       position: fixed;
       bottom: -150px;
@@ -88,7 +84,6 @@
       align-items: center;
       gap: 0.75rem;
     }
-
     .brand-icon {
       width: 36px;
       height: 36px;
@@ -99,13 +94,11 @@
       justify-content: center;
       box-shadow: 0 0 20px var(--primary-glow);
     }
-
     .brand-icon svg {
       width: 20px;
       height: 20px;
       fill: #fff;
     }
-
     .brand-name {
       font-size: 1.25rem;
       font-weight: 800;
@@ -114,7 +107,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     .brand-tag {
       font-size: 0.7rem;
       font-weight: 600;
@@ -140,7 +132,6 @@
       border-radius: 9999px;
       border: 1px solid var(--border-color);
     }
-
     .status-dot {
       width: 8px;
       height: 8px;
@@ -149,19 +140,10 @@
       box-shadow: 0 0 8px var(--success);
       animation: pulse 2s infinite;
     }
-
     @keyframes pulse {
-      0% {
-        opacity: 0.6;
-      }
-
-      50% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0.6;
-      }
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
     }
 
     /* Main Container */
@@ -177,14 +159,12 @@
       text-align: center;
       margin-bottom: 2.5rem;
     }
-
     .hero-banner h1 {
       font-size: 2.5rem;
       font-weight: 800;
       letter-spacing: -0.03em;
       margin-bottom: 0.6rem;
     }
-
     .hero-banner p {
       color: var(--text-muted);
       font-size: 1.05rem;
@@ -217,7 +197,6 @@
       box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
       transition: all 0.3s ease;
     }
-
     .glass-card:hover {
       border-color: rgba(255, 255, 255, 0.15);
     }
@@ -230,7 +209,6 @@
       padding-bottom: 0.75rem;
       border-bottom: 1px solid var(--border-color);
     }
-
     .card-title {
       font-size: 1.1rem;
       font-weight: 700;
@@ -246,7 +224,6 @@
       gap: 0.5rem;
       margin-bottom: 1.5rem;
     }
-
     .sample-label {
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -254,13 +231,11 @@
       color: var(--text-muted);
       font-weight: 600;
     }
-
     .sample-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
     }
-
     .chip {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border-color);
@@ -272,13 +247,11 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
-
     .chip:hover {
       background: rgba(99, 102, 241, 0.18);
       border-color: var(--primary);
       transform: translateY(-1px);
     }
-
     .chip.active {
       background: var(--primary);
       border-color: var(--primary);
@@ -290,7 +263,6 @@
     .form-group {
       margin-bottom: 1.25rem;
     }
-
     .form-group label {
       display: block;
       font-size: 0.85rem;
@@ -298,7 +270,6 @@
       margin-bottom: 0.5rem;
       color: #e2e8f0;
     }
-
     textarea {
       width: 100%;
       background: rgba(10, 14, 23, 0.8);
@@ -313,7 +284,6 @@
       outline: none;
       transition: all 0.2s ease;
     }
-
     textarea:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px var(--primary-glow);
@@ -335,13 +305,10 @@
       justify-content: center;
       min-height: 170px;
     }
-
-    .dropzone:hover,
-    .dropzone.dragover {
+    .dropzone:hover, .dropzone.dragover {
       border-color: var(--primary);
       background: rgba(99, 102, 241, 0.08);
     }
-
     .dropzone input[type="file"] {
       position: absolute;
       top: 0;
@@ -351,7 +318,6 @@
       opacity: 0;
       cursor: pointer;
     }
-
     .dropzone-icon {
       width: 44px;
       height: 44px;
@@ -363,13 +329,11 @@
       margin-bottom: 0.75rem;
       color: var(--text-muted);
     }
-
     .dropzone-text {
       font-size: 0.9rem;
       font-weight: 500;
       color: #e2e8f0;
     }
-
     .dropzone-sub {
       font-size: 0.75rem;
       color: var(--text-muted);
@@ -387,14 +351,12 @@
       border: 1px solid var(--border-color);
       max-height: 220px;
     }
-
     .preview-img {
       width: 100%;
       height: 220px;
       object-fit: cover;
       display: block;
     }
-
     .remove-img-btn {
       position: absolute;
       top: 10px;
@@ -412,7 +374,6 @@
       font-weight: bold;
       transition: 0.2s;
     }
-
     .remove-img-btn:hover {
       background: var(--danger);
     }
@@ -437,12 +398,10 @@
       gap: 0.6rem;
       margin-top: 1.5rem;
     }
-
     .btn-submit:hover:not(:disabled) {
       transform: translateY(-2px);
       box-shadow: 0 12px 30px rgba(99, 102, 241, 0.5);
     }
-
     .btn-submit:disabled {
       opacity: 0.6;
       cursor: not-allowed;
@@ -458,11 +417,8 @@
       border-top-color: white;
       animation: spin 0.8s linear infinite;
     }
-
     @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      to { transform: rotate(360deg); }
     }
 
     /* Right column: Results display */
@@ -476,7 +432,6 @@
       color: var(--text-muted);
       padding: 2rem;
     }
-
     .empty-state svg {
       width: 64px;
       height: 64px;
@@ -488,17 +443,9 @@
       display: none;
       animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Verdict Card */
@@ -513,13 +460,11 @@
       position: relative;
       overflow: hidden;
     }
-
     .verdict-banner.fake {
       background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(185, 28, 28, 0.05));
       border-color: rgba(239, 68, 68, 0.4);
       box-shadow: 0 0 30px var(--danger-glow);
     }
-
     .verdict-banner.authentic {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(4, 120, 87, 0.05));
       border-color: rgba(16, 185, 129, 0.4);
@@ -533,20 +478,13 @@
       color: var(--text-muted);
       margin-bottom: 0.25rem;
     }
-
     .verdict-title {
       font-size: 1.7rem;
       font-weight: 800;
       letter-spacing: -0.02em;
     }
-
-    .verdict-banner.fake .verdict-title {
-      color: #FCA5A5;
-    }
-
-    .verdict-banner.authentic .verdict-title {
-      color: #6EE7B7;
-    }
+    .verdict-banner.fake .verdict-title { color: #FCA5A5; }
+    .verdict-banner.authentic .verdict-title { color: #6EE7B7; }
 
     /* Confidence circular gauge */
     .gauge-circle {
@@ -557,19 +495,16 @@
       align-items: center;
       justify-content: center;
     }
-
     .gauge-circle svg {
       width: 80px;
       height: 80px;
       transform: rotate(-90deg);
     }
-
     .gauge-bg {
       fill: none;
       stroke: rgba(255, 255, 255, 0.1);
       stroke-width: 6;
     }
-
     .gauge-bar {
       fill: none;
       stroke-width: 6;
@@ -578,7 +513,6 @@
       stroke-dashoffset: 60;
       transition: stroke-dashoffset 1s ease;
     }
-
     .gauge-text {
       position: absolute;
       font-size: 0.95rem;
@@ -593,28 +527,24 @@
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
-
     .metric-card {
       background: rgba(10, 14, 23, 0.6);
       border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: 1rem;
     }
-
     .metric-title {
       font-size: 0.75rem;
       color: var(--text-muted);
       font-weight: 600;
       margin-bottom: 0.4rem;
     }
-
     .metric-value {
       font-size: 1.25rem;
       font-weight: 800;
       font-family: 'JetBrains Mono', monospace;
       margin-bottom: 0.4rem;
     }
-
     .progress-bar-bg {
       width: 100%;
       height: 6px;
@@ -622,7 +552,6 @@
       border-radius: 9999px;
       overflow: hidden;
     }
-
     .progress-bar-fill {
       height: 100%;
       border-radius: 9999px;
@@ -637,7 +566,6 @@
       padding: 1.25rem;
       margin-bottom: 1.5rem;
     }
-
     .tab-header {
       display: flex;
       gap: 0.5rem;
@@ -645,7 +573,6 @@
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 0.5rem;
     }
-
     .tab-btn {
       background: none;
       border: none;
@@ -657,25 +584,20 @@
       cursor: pointer;
       transition: 0.2s;
     }
-
     .tab-btn:hover {
       color: white;
     }
-
     .tab-btn.active {
       color: var(--primary);
       background: rgba(99, 102, 241, 0.15);
     }
-
     .tab-content {
       display: none;
       text-align: center;
     }
-
     .tab-content.active {
       display: block;
     }
-
     .xai-image {
       max-height: 250px;
       border-radius: 10px;
@@ -683,7 +605,6 @@
       margin: 0 auto 0.75rem auto;
       display: block;
     }
-
     .xai-caption {
       font-size: 0.78rem;
       color: var(--text-muted);
@@ -697,7 +618,6 @@
       border-radius: 14px;
       padding: 1.25rem;
     }
-
     .reasons-title {
       font-size: 0.85rem;
       font-weight: 700;
@@ -707,14 +627,12 @@
       align-items: center;
       gap: 0.4rem;
     }
-
     .reasons-list {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
     }
-
     .reasons-list li {
       font-size: 0.82rem;
       color: #cbd5e1;
@@ -726,7 +644,6 @@
       gap: 0.5rem;
       line-height: 1.4;
     }
-
     .reasons-list li::before {
       content: "•";
       color: var(--primary);
@@ -745,7 +662,6 @@
       box-shadow: 0 0 25px rgba(239, 68, 68, 0.15);
       animation: fadeIn 0.3s ease;
     }
-
     .factcheck-header {
       display: flex;
       justify-content: space-between;
@@ -754,7 +670,6 @@
       flex-wrap: wrap;
       gap: 0.5rem;
     }
-
     .factcheck-badge {
       font-size: 0.75rem;
       font-weight: 700;
@@ -765,13 +680,11 @@
       background: rgba(239, 68, 68, 0.2);
       color: #fca5a5;
     }
-
     .factcheck-source {
       font-size: 0.8rem;
       color: #cbd5e1;
       font-weight: 600;
     }
-
     .factcheck-title {
       font-size: 0.95rem;
       font-weight: 700;
@@ -779,7 +692,6 @@
       line-height: 1.4;
       margin-bottom: 0.6rem;
     }
-
     .factcheck-link {
       display: inline-flex;
       align-items: center;
@@ -790,7 +702,6 @@
       text-decoration: none;
       transition: 0.2s;
     }
-
     .factcheck-link:hover {
       color: #7dd3fc;
       text-decoration: underline;
@@ -806,7 +717,6 @@
       border: 1px solid var(--border-color);
       margin-bottom: 1.25rem;
     }
-
     .modality-tab {
       flex: 1;
       display: flex;
@@ -823,12 +733,10 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
-
     .modality-tab:hover {
       color: var(--text-main);
       background: rgba(255, 255, 255, 0.05);
     }
-
     .modality-tab.active {
       color: #fff;
       background: linear-gradient(135deg, var(--primary), var(--accent-purple));
@@ -845,21 +753,18 @@
       display: none;
       position: relative;
     }
-
     .media-preview-box video {
       width: 100%;
       max-height: 240px;
       display: block;
       outline: none;
     }
-
     .media-preview-box audio {
       width: 100%;
       padding: 0.5rem;
       outline: none;
       display: block;
     }
-
     .media-clear-btn {
       position: absolute;
       top: 8px;
@@ -877,7 +782,6 @@
       z-index: 10;
       transition: 0.2s;
     }
-
     .media-clear-btn:hover {
       background: var(--danger);
     }
@@ -891,7 +795,6 @@
       margin-bottom: 1.25rem;
       display: none;
     }
-
     .keyframes-title {
       font-size: 0.8rem;
       font-weight: 700;
@@ -903,13 +806,11 @@
       align-items: center;
       gap: 0.4rem;
     }
-
     .keyframes-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
       gap: 0.5rem;
     }
-
     .keyframe-thumb {
       width: 100%;
       aspect-ratio: 16/9;
@@ -918,7 +819,6 @@
       border: 1px solid var(--border-color);
       transition: transform 0.2s;
     }
-
     .keyframe-thumb:hover {
       transform: scale(1.05);
       border-color: var(--primary);
@@ -933,7 +833,6 @@
       margin-bottom: 1.25rem;
       display: none;
     }
-
     .transcript-header {
       font-size: 0.75rem;
       font-weight: 700;
@@ -945,7 +844,6 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .transcript-content {
       font-size: 0.92rem;
       color: #f8fafc;
@@ -954,7 +852,6 @@
     }
   </style>
 </head>
-
 <body>
 
   <div class="glow-circle-1"></div>
@@ -964,9 +861,7 @@
   <header>
     <div class="brand">
       <div class="brand-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
       <div>
         <span class="brand-name">VERITAS MULTIMODAL</span>
@@ -983,8 +878,7 @@
   <main>
     <div class="hero-banner">
       <h1>Multimodal Fake Content Detection</h1>
-      <p>Cross-modal alignment of textual claims and visual evidence using OpenCLIP ViT-B/32, Error Level Forensics, and
-        Deep Fusion.</p>
+      <p>Cross-modal alignment of textual claims and visual evidence using OpenCLIP ViT-B/32, Error Level Forensics, and Deep Fusion.</p>
     </div>
 
     <div class="dashboard-grid">
@@ -992,13 +886,7 @@
       <section class="glass-card">
         <div class="card-header">
           <h2 class="card-title">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-              <polyline points="10 9 9 9 8 9"></polyline>
-            </svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             Evidence Ingestion
           </h2>
         </div>
@@ -1031,8 +919,7 @@
           <!-- Text Claim Input -->
           <div class="form-group">
             <label for="headlineText" id="textInputLabel">News Claim / Headline / Narrative:</label>
-            <textarea id="headlineText" name="text"
-              placeholder="Paste news headline, tweet caption, or article statement here..."></textarea>
+            <textarea id="headlineText" name="text" placeholder="Paste news headline, tweet caption, or article statement here..."></textarea>
           </div>
 
           <!-- 1. Image Modality Section -->
@@ -1041,11 +928,7 @@
             <div class="dropzone" id="dropzone">
               <input type="file" id="imageInput" name="image" accept="image/*">
               <div class="dropzone-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                  <polyline points="21 15 16 10 5 21"></polyline>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
               </div>
               <div class="dropzone-text">Drag & drop photo here, or click to browse</div>
               <div class="dropzone-sub">Supports JPG, PNG, WEBP (Max 15MB)</div>
@@ -1061,13 +944,9 @@
           <div class="form-group" id="videoInputGroup" style="display: none;">
             <label>Video Footage Evidence:</label>
             <div class="dropzone" id="videoDropzone">
-              <input type="file" id="videoInput" name="video"
-                accept="video/mp4,video/webm,video/quicktime,video/x-msvideo">
+              <input type="file" id="videoInput" name="video" accept="video/mp4,video/webm,video/quicktime,video/x-msvideo">
               <div class="dropzone-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
               </div>
               <div class="dropzone-text">Drag & drop video clip, or click to browse</div>
               <div class="dropzone-sub">Supports MP4, WEBM, MOV, AVI (Max 50MB)</div>
@@ -1083,15 +962,9 @@
           <div class="form-group" id="audioInputGroup" style="display: none;">
             <label>Speech / Audio Recording:</label>
             <div class="dropzone" id="audioDropzone">
-              <input type="file" id="audioInput" name="audio"
-                accept="audio/mpeg,audio/wav,audio/mp4,audio/ogg,audio/x-m4a">
+              <input type="file" id="audioInput" name="audio" accept="audio/mpeg,audio/wav,audio/mp4,audio/ogg,audio/x-m4a">
               <div class="dropzone-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                  <line x1="12" y1="19" x2="12" y2="23"></line>
-                  <line x1="8" y1="23" x2="16" y2="23"></line>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
               </div>
               <div class="dropzone-text">Drag & drop audio speech, or click to browse</div>
               <div class="dropzone-sub">Supports WAV, MP3, M4A, OGG (Max 25MB)</div>
@@ -1115,25 +988,16 @@
       <section class="glass-card">
         <div class="card-header">
           <h2 class="card-title">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
             Forensic & Cross-Modal Diagnostic
           </h2>
         </div>
 
         <!-- Initial Empty Placeholder -->
         <div class="empty-state" id="emptyState">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-            <polyline points="2 17 12 22 22 17"></polyline>
-            <polyline points="2 12 12 17 22 12"></polyline>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
           <h3 style="margin-bottom: 0.5rem; font-weight: 700; color: #e2e8f0;">No Claim Analyzed Yet</h3>
-          <p style="font-size: 0.85rem; max-width: 340px;">Select an evaluation mode, upload an evidence file, and click
-            Analyze to run cross-modal verification.</p>
+          <p style="font-size: 0.85rem; max-width: 340px;">Select an evaluation mode, upload an evidence file, and click Analyze to run cross-modal verification.</p>
         </div>
 
         <!-- Populated Results Container -->
@@ -1156,12 +1020,7 @@
           <!-- Video Keyframes Strip (Active for Video) -->
           <div class="keyframes-card" id="keyframesCard">
             <div class="keyframes-title">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-                <line x1="7" y1="2" x2="7" y2="22"></line>
-                <line x1="17" y1="2" x2="17" y2="22"></line>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-              </svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
               Sampled Temporal Keyframes:
             </div>
             <div class="keyframes-grid" id="keyframesGrid"></div>
@@ -1171,8 +1030,7 @@
           <div class="transcript-box" id="transcriptBox">
             <div class="transcript-header">
               <span>🎙️ Whisper ASR Speech Transcript:</span>
-              <span id="transcriptMeta" style="color: var(--text-muted); font-size: 0.72rem;">Lang: EN | 100%
-                Match</span>
+              <span id="transcriptMeta" style="color: var(--text-muted); font-size: 0.72rem;">Lang: EN | 100% Match</span>
             </div>
             <div class="transcript-content" id="transcriptContent"></div>
           </div>
@@ -1220,20 +1078,18 @@
               <button class="tab-btn active" onclick="switchXaiTab('gradcam')">Grad-CAM Visual Attention</button>
               <button class="tab-btn" onclick="switchXaiTab('ela')">Error Level Forensics (ELA)</button>
             </div>
-
+            
             <div class="tab-content active" id="tabGradcam">
               <img id="gradcamImg" class="xai-image" src="" alt="Grad-CAM Heatmap">
               <div class="xai-caption">
-                <strong>Attention Saliency Map:</strong> Red/Yellow regions indicate visual elements that drove the
-                model's decision regarding semantic discrepancy or tampering.
+                <strong>Attention Saliency Map:</strong> Red/Yellow regions indicate visual elements that drove the model's decision regarding semantic discrepancy or tampering.
               </div>
             </div>
 
             <div class="tab-content" id="tabEla">
               <img id="elaImg" class="xai-image" src="" alt="Error Level Analysis">
               <div class="xai-caption">
-                <strong>Compression Error Level Analysis:</strong> Highlights differences in JPEG compression blocks,
-                exposing spliced or pasted foreign objects.
+                <strong>Compression Error Level Analysis:</strong> Highlights differences in JPEG compression blocks, exposing spliced or pasted foreign objects.
               </div>
             </div>
           </div>
@@ -1241,9 +1097,7 @@
           <!-- Decision Reasoning Details -->
           <div class="reasons-box">
             <div class="reasons-title">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
               Explainable Reasoning (Why this verdict?):
             </div>
             <ul class="reasons-list" id="reasonsList">
@@ -1265,7 +1119,7 @@
     // Switch Modality Function
     function switchModality(mode) {
       currentModality = mode;
-
+      
       document.querySelectorAll('.modality-tab').forEach(t => t.classList.remove('active'));
       document.getElementById('imageInputGroup').style.display = 'none';
       document.getElementById('videoInputGroup').style.display = 'none';
@@ -1299,7 +1153,7 @@
       try {
         const res = await fetch('/api/samples');
         samplesData = await res.json();
-
+        
         // System status
         const sysRes = await fetch('/api/system-status');
         const sys = await sysRes.json();
@@ -1322,7 +1176,7 @@
     async function loadSample(index) {
       if (!samplesData || !samplesData[index]) return;
       const sample = samplesData[index];
-
+      
       document.querySelectorAll('.chip').forEach((c, i) => {
         c.classList.toggle('active', i === index);
       });
@@ -1334,7 +1188,7 @@
         const response = await fetch(imgUrl);
         const blob = await response.blob();
         currentSelectedBlob = blob;
-
+        
         const previewImg = document.getElementById('previewImg');
         previewImg.src = URL.createObjectURL(blob);
         document.getElementById('previewContainer').style.display = 'block';
@@ -1493,8 +1347,8 @@
       } finally {
         submitBtn.disabled = false;
         loadingSpinner.style.display = 'none';
-        btnText.innerText = currentModality === 'video' ? 'ANALYZE VIDEO MULTIMODAL AUTHENTICITY' :
-          (currentModality === 'audio' ? 'ANALYZE AUDIO & SPEECH AUTHENTICITY' : 'ANALYZE MULTIMODAL AUTHENTICITY');
+        btnText.innerText = currentModality === 'video' ? 'ANALYZE VIDEO MULTIMODAL AUTHENTICITY' : 
+                            (currentModality === 'audio' ? 'ANALYZE AUDIO & SPEECH AUTHENTICITY' : 'ANALYZE MULTIMODAL AUTHENTICITY');
       }
     });
 
@@ -1545,7 +1399,7 @@
       const transcriptBox = document.getElementById('transcriptBox');
       const transcriptContent = document.getElementById('transcriptContent');
       const transcriptMeta = document.getElementById('transcriptMeta');
-
+      
       let transcriptText = "";
       let langMeta = "EN";
       if (data.modality === 'video' && data.audio_data && data.audio_data.transcript) {
@@ -1680,5 +1534,4 @@
     }
   </script>
 </body>
-
 </html>
